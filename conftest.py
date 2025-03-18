@@ -1,13 +1,14 @@
 import pytest
+import allure
 from selenium import webdriver
 
-@pytest.fixture(params=['chrome','firefox'])
-def driver(requests):
-    if requests.param == 'chrome':
+@pytest.fixture(scope='function',params=['chrome','firefox'])
+def driver(request):
+    if request.param == 'chrome':
         options = webdriver.ChromeOptions()
         options.add_argument('--start-maximized')
         driver = webdriver.Chrome(options=options)
-    elif requests.param == 'firefox':
+    elif request.param == 'firefox':
         options = webdriver.FirefoxOptions()
         options.add_argument('--start-maximized')
         driver = webdriver.Firefox(options=options)
