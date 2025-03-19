@@ -15,3 +15,6 @@ def driver(request):
 
     yield driver
     driver.quit()
+
+@pytest.fixture(scope='function')
+def create_account():
