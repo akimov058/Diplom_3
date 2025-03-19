@@ -17,3 +17,15 @@ class TestRecoveryPassword:
         recover_page = RecoverPasswordPage(driver)
         recover_page.click_recovery_password_button()
         recover_page.send_email(Data.EMAIL)
+        recover_page.click_recovery_button()
+        assert recover_page.current_url() == Urls.URL_RESET_PASSWORD
+
+    @allure.title('клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его.')
+    def test_click_to_show_hide_password(self,driver):
+        driver.get(Urls.URL_LOGIN_PAGE)
+        recover_page = RecoverPasswordPage(driver)
+        recover_page.click_recovery_password_button()
+        recover_page.send_email(Data.EMAIL)
+        recover_page.click_recovery_button()
+        recover_page.click_show_password()
+        assert recover_page.check_show_password()
