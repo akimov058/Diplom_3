@@ -1,2 +1,3 @@
 class Data:
-    EMAIL = 'Akimov@yandex.ru'
+    EMAIL = 'YuAkimov58@ya.ru'
+    PASSWORD = 'Qwerty12334'
