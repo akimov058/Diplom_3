@@ -17,3 +17,6 @@ class BasePage:
     def execute_scripts(self,element):
         return self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
+    def get_text_for_element(self,locators):
+        return self.driver.find_element(*locators).text
+
