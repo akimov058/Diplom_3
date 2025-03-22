@@ -23,3 +23,11 @@ class TestMainFunc:
         main_func = MainFuncPage(driver)
         main_func.click_ingredient()
         assert main_func.get_text_window_ingredient() == 'Детали ингредиента'
+
+    @allure.title('Всплывающее окно закрывается кликом по крестику')
+    def test_click_ingredient_and_close_window(self,driver):
+        driver.get(Urls.URL_BASE_PAGE)
+        main_func = MainFuncPage(driver)
+        main_func.click_ingredient()
+        main_func.close_ingredient_window()
+        assert main_func.get_text_collect_burger() == 'Соберите бургер'

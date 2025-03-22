@@ -27,3 +27,10 @@ class MainFuncPage(BasePage):
     def get_text_window_ingredient(self):
         return self.get_text_for_element(MainFuncLocators.TEXT_FOR_MODAL_INGREDIENT)
 
+    @allure.step('Нажимаем на крестик')
+    def close_ingredient_window(self):
+        self.find_element(MainFuncLocators.BUTTON_CLOSE_INGREDIENT_WINDOW).click()
+
+    @allure.step('Получаем текст соберите бургер')
+    def get_text_collect_burger(self):
+        return self.get_text_for_element(MainFuncLocators.TEXT_COLLECT_BURGER)
