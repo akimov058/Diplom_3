@@ -1,7 +1,6 @@
 import allure
 from urls.urls import Urls
 from pages.personal_account_page import PersonalAccountPage
-from data.data import Data
 
 class TestPersonalAccount:
     @allure.title('Переход по клику на «Личный кабинет»')

@@ -1,5 +1,3 @@
-import time
-
 import allure
 from pages.base_page import BasePage
 from locators.personal_accoount_locators import PersonalAccountLocators
@@ -9,8 +7,8 @@ from data.data import Data
 class PersonalAccountPage(BasePage):
     @allure.step('Нажать на кнопку Личный кабинет')
     def click_personal_account(self):
-        self.wait_for_load_element(PersonalAccountLocators.BUTTON_PERSONAL_ACCOUNT)
-        self.find_element(PersonalAccountLocators.BUTTON_PERSONAL_ACCOUNT).click()
+        self.wait_for_load_element(BaseLocators.BUTTON_PERSONAL_ACCOUNT)
+        self.find_element(BaseLocators.BUTTON_PERSONAL_ACCOUNT).click()
         #self.wait_for_load_element(BaseLocators.FIELD_EMAIL)
 
     @allure.step('Вводим email')
@@ -30,7 +28,7 @@ class PersonalAccountPage(BasePage):
         self.send_email()
         self.send_password()
         self.click_button_login()
-        self.wait_for_load_element(PersonalAccountLocators.BUTTON_PERSONAL_ACCOUNT)
+        self.wait_for_load_element(BaseLocators.BUTTON_PERSONAL_ACCOUNT)
     @allure.step('Нажимаем на кнопку История заказов')
     def click_history_order(self):
         self.wait_for_load_element(PersonalAccountLocators.BUTTON_HISTORY)
