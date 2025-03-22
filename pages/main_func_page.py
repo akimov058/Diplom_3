@@ -15,7 +15,8 @@ class MainFuncPage(BasePage):
 
     @allure.step('Нажимаем на кнопку Лента Заказа')
     def click_order_feed(self):
-        self.wait_for_load_element(MainFuncLocators.BUTTON_ORDER_FEED)
+        time.sleep(3)
+        self.wait_for_clickable_element(MainFuncLocators.BUTTON_ORDER_FEED)
         self.find_element(MainFuncLocators.BUTTON_ORDER_FEED).click()
         self.wait_for_load_element(BaseLocators.BUTTON_PERSONAL_ACCOUNT)
 
