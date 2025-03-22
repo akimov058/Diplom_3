@@ -11,7 +11,7 @@ class PersonalAccountPage(BasePage):
     def click_personal_account(self):
         self.wait_for_load_element(PersonalAccountLocators.BUTTON_PERSONAL_ACCOUNT)
         self.find_element(PersonalAccountLocators.BUTTON_PERSONAL_ACCOUNT).click()
-        self.wait_for_load_element(BaseLocators.FIELD_EMAIL)
+        #self.wait_for_load_element(BaseLocators.FIELD_EMAIL)
 
     @allure.step('Вводим email')
     def send_email(self):
@@ -33,7 +33,12 @@ class PersonalAccountPage(BasePage):
         self.wait_for_load_element(PersonalAccountLocators.BUTTON_PERSONAL_ACCOUNT)
     @allure.step('Нажимаем на кнопку История заказов')
     def click_history_order(self):
-        self.wait_for_load_element(PersonalAccountLocators.BUTTON_HISTORY_ORDER)
-        self.find_element(PersonalAccountLocators.BUTTON_HISTORY_ORDER).click()
-        time.sleep(5)
+        self.wait_for_load_element(PersonalAccountLocators.BUTTON_HISTORY)
+        self.find_element(PersonalAccountLocators.BUTTON_HISTORY).click()
+
+    @allure.step('Нажимаем на кнопку Выход')
+    def click_logout(self):
+        self.wait_for_load_element(PersonalAccountLocators.BUTTON_LOGOUT)
+        self.find_element(PersonalAccountLocators.BUTTON_LOGOUT).click()
+        self.wait_for_load_element(BaseLocators.FIELD_EMAIL)
 
