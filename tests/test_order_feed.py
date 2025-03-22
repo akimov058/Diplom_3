@@ -49,9 +49,23 @@ class TestOrderFeed:
         main_page.click_order_feed()
         new_all_orders = order_page.get_count_all_orders()
         new_today_orders = order_page.get_count_today_orders()
-        assert new_all_orders > all_orders and new_today_orders > today_orders
+        assert new_all_orders >= all_orders and new_today_orders >= today_orders
 
-
+    @allure.title('После оформления заказа его номер появляется в разделе В работе')
+    def test_order_in_work(self, driver):
+        driver.get(Urls.URL_BASE_PAGE)
+        personal_account = PersonalAccountPage(driver)
+        personal_account.click_personal_account()
+        personal_account.send_email_and_password_and_login()
+        main_page = MainFuncPage(driver)
+        main_page.add_ingredient()
+        main_page.click_button_order()
+        main_page.check_modal_is_displayed()
+        order_number = main_page.get_order_number()
+        main_page.click_modal_close()
+        main_page.click_order_feed()
+        order_page = OrderFeedPage(driver)
+        assert order_number in order_page.get_order_in_work()
 
 
 

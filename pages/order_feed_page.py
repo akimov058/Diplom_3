@@ -26,3 +26,8 @@ class OrderFeedPage(BasePage):
     def get_count_today_orders(self):
         self.wait_for_load_element(OrderFeedLocators.FOR_TODAY_ORDERS)
         return self.get_text_for_element(OrderFeedLocators.FOR_TODAY_ORDERS)
+
+    @allure.step('Получить номер заказа В работе')
+    def get_order_in_work(self):
+        self.wait_for_load_element(OrderFeedLocators.WORK_ORDER)
+        return self.get_text_for_element(OrderFeedLocators.WORK_ORDER)
