@@ -57,3 +57,13 @@ class MainFuncPage(BasePage):
         self.wait_for_clickable_element(MainFuncLocators.BUTTON_CLOSE_INGREDIENT_WINDOW)
         self.wait_for_load_element(MainFuncLocators.TEXT_ID_ORDER)
         return self.find_element(MainFuncLocators.TEXT_ID_ORDER).is_displayed()
+
+    @allure.step('Получить номер заказа')
+    def get_order_number(self):
+        self.wait_for_invisibility_element(MainFuncLocators.TEXT_ORDER_NUMBER)
+        return self.get_text_for_element(MainFuncLocators.TEXT_ORDER_NUMBER)
+
+    @allure.step('Закрыть модальное окно')
+    def click_modal_close(self):
+        self.wait_for_load_element(MainFuncLocators.BUTTON_CLOSE_INGREDIENT_WINDOW)
+        self.find_element(MainFuncLocators.BUTTON_CLOSE_INGREDIENT_WINDOW).click()

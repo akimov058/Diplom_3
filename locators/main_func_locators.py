@@ -11,3 +11,4 @@ class MainFuncLocators:
     TEXT_COUNT_BUN = [By.XPATH,'(//p[contains(@class, "counter_counter__num__3nue1")])[1]']
     BUTTON_ORDER = [By.XPATH,'//button[contains(@class, "button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg")]']
     TEXT_ID_ORDER = [By.XPATH,'//p[text() = "идентификатор заказа"]']
+    TEXT_ORDER_NUMBER = [By.CSS_SELECTOR, '.Modal_modal__loading__3534A']

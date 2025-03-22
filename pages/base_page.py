@@ -29,4 +29,6 @@ class BasePage:
     def wait_for_clickable_element(self,locators):
         WebDriverWait(self.driver,20).until(expected_conditions.element_to_be_clickable(locators))
 
+    def wait_for_invisibility_element(self,locators):
+        WebDriverWait(self.driver,10).until(expected_conditions.invisibility_of_element_located(locators))
 
