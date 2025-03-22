@@ -1,6 +1,7 @@
 import allure
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver import ActionChains
 
 class BasePage:
     def __init__(self,driver):
@@ -19,4 +20,13 @@ class BasePage:
 
     def get_text_for_element(self,locators):
         return self.driver.find_element(*locators).text
+
+    def drag_and_drop(self,element1,element2):
+        element1 = self.driver.find_element(*element1)
+        element2 = self.driver.find_element(*element2)
+        ActionChains(self.driver).drag_and_drop(element1, element2).perform()
+
+    def wait_for_clickable_element(self,locators):
+        WebDriverWait(self.driver,20).until(expected_conditions.element_to_be_clickable(locators))
+
 

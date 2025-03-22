@@ -1,3 +1,5 @@
+import time
+
 import allure
 from pages.base_page import BasePage
 from locators.main_func_locators import MainFuncLocators
@@ -34,3 +36,24 @@ class MainFuncPage(BasePage):
     @allure.step('Получаем текст соберите бургер')
     def get_text_collect_burger(self):
         return self.get_text_for_element(MainFuncLocators.TEXT_COLLECT_BURGER)
+
+    @allure.step('Добавляем ингредиент в заказ')
+    def add_ingredient(self):
+        self.wait_for_load_element(MainFuncLocators.IMG_INGREDIENT)
+        self.drag_and_drop(MainFuncLocators.IMG_INGREDIENT,MainFuncLocators.AREA_BASKET)
+
+    @allure.step('Получаем количество булок')
+    def get_count_bun(self):
+        time.sleep(2)
+        return self.get_text_for_element(MainFuncLocators.TEXT_COUNT_BUN)
+
+    @allure.step('Нажимаем на кнопку оформить заказ')
+    def click_button_order(self):
+        self.wait_for_load_element(MainFuncLocators.BUTTON_ORDER)
+        self.find_element(MainFuncLocators.BUTTON_ORDER).click()
+
+    @allure.step('Проверяем отображение модального окна с номером заказа')
+    def check_modal_is_displayed(self):
+        self.wait_for_clickable_element(MainFuncLocators.BUTTON_CLOSE_INGREDIENT_WINDOW)
+        self.wait_for_load_element(MainFuncLocators.TEXT_ID_ORDER)
+        return self.find_element(MainFuncLocators.TEXT_ID_ORDER).is_displayed()

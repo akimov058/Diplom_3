@@ -1,6 +1,8 @@
 import allure
 from urls.urls import Urls
 from pages.main_func_page import MainFuncPage
+from pages.personal_account_page import PersonalAccountPage
+
 
 class TestMainFunc:
     @allure.title('Переход по клику на «Конструктор»')
@@ -31,3 +33,20 @@ class TestMainFunc:
         main_func.click_ingredient()
         main_func.close_ingredient_window()
         assert main_func.get_text_collect_burger() == 'Соберите бургер'
+
+    @allure.title('При добавлении ингредиента в заказ, увеличивается каунтер данного ингредиента')
+    def test_add_ingredient_count(self,driver):
+        driver.get(Urls.URL_BASE_PAGE)
+        main_func = MainFuncPage(driver)
+        main_func.add_ingredient()
+        assert main_func.get_count_bun() == '2'
+
+    @allure.title('Залогиненный пользователь может оформить заказ')
+    def test_create_order_with_login_user(self,driver):
+        driver.get(Urls.URL_LOGIN_PAGE)
+        personal_account = PersonalAccountPage(driver)
+        personal_account.send_email_and_password_and_login()
+        main_func = MainFuncPage(driver)
+        main_func.add_ingredient()
+        main_func.click_button_order()
+        assert main_func.check_modal_is_displayed()==True
