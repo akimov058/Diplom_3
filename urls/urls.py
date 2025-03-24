@@ -1,0 +1,7 @@
+class Urls:
+    URL_BASE_PAGE = 'https://stellarburgers.nomoreparties.site/'
+    URL_LOGIN_PAGE = URL_BASE_PAGE + 'login'
+    URL_FORGOT_PASSWORD = URL_BASE_PAGE + 'forgot-password'
+    URL_RESET_PASSWORD = URL_BASE_PAGE + 'reset-password'
+    URL_HISTORY_ORDER = URL_BASE_PAGE + 'account/order-history'
+    URL_ORDER_FEED = URL_BASE_PAGE + 'feed'
