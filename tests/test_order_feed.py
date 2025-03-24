@@ -7,8 +7,8 @@ from pages.personal_account_page import PersonalAccountPage
 class TestOrderFeed:
     @allure.title('Eсли кликнуть на заказ, откроется всплывающее окно с деталями')
     def test_order_modal_open(self, driver):
-        driver.get(Urls.URL_BASE_PAGE)
         main_func = MainFuncPage(driver)
+        main_func.open_url(Urls.URL_BASE_PAGE)
         main_func.click_order_feed()
         order_feed = OrderFeedPage(driver)
         order_feed.click_order()
@@ -16,8 +16,8 @@ class TestOrderFeed:
 
     @allure.title('Заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
     def test_order_from_history_displayed_order_list(self, driver):
-        driver.get(Urls.URL_BASE_PAGE)
         personal_account = PersonalAccountPage(driver)
+        personal_account.open_url(Urls.URL_BASE_PAGE)
         personal_account.click_personal_account()
         personal_account.send_email_and_password_and_login()
         main_page = MainFuncPage(driver)
@@ -32,8 +32,8 @@ class TestOrderFeed:
 
     @allure.title('При создании нового заказа счетчик Выполнено за все время/сегодня увеличивается')
     def test_count_orders(self, driver):
-        driver.get(Urls.URL_BASE_PAGE)
         personal_account = PersonalAccountPage(driver)
+        personal_account.open_url(Urls.URL_BASE_PAGE)
         personal_account.click_personal_account()
         personal_account.send_email_and_password_and_login()
         main_page = MainFuncPage(driver)
@@ -53,8 +53,8 @@ class TestOrderFeed:
 
     @allure.title('После оформления заказа его номер появляется в разделе В работе')
     def test_order_in_work(self, driver):
-        driver.get(Urls.URL_BASE_PAGE)
         personal_account = PersonalAccountPage(driver)
+        personal_account.open_url(Urls.URL_BASE_PAGE)
         personal_account.click_personal_account()
         personal_account.send_email_and_password_and_login()
         main_page = MainFuncPage(driver)
